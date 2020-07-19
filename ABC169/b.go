@@ -30,14 +30,17 @@ func main() {
 		if err == false {
 			panic(err)
 		}
-
-		answer.Mul(answer, num)
-
-		if answer.Cmp(arg) == 1 {
-			fmt.Println("-1")
-			os.Exit(1)
+		if num.Cmp(big.NewInt(int64(0))) == 0 {
+			answer.Mul(answer, num)
+			break
 		}
+		answer.Mul(answer, num)
 	}
 
-	fmt.Println(answer)
+	if answer.Cmp(arg) == 1 {
+		fmt.Println("-1")
+	} else {
+		fmt.Println(answer)
+	}
+
 }
